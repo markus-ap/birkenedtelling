@@ -19,3 +19,9 @@ body{
 #kropp h1{
     font-size: 4rem;
 }
+
+.snowflake{
+    background-color: white;
+    width: 10px;
+    height: 10px;
+}
