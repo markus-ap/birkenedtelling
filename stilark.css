@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: maroon;
+}
+
+#kropp{
+    padding: 5rem;
+    margin:auto;
+    margin-top: 20vh;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+#kropp p{
+    font-size: 2rem;
+}
+#kropp h1{
+    font-size: 4rem;
+}
