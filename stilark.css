@@ -1,13 +1,16 @@
-body{
+*{
     margin: 0;
     padding: 0;
+}
+body{
     background-color: maroon;
 }
 
 #kropp{
+    padding-top: 0;
+    margin-top: 0;
     padding: 5rem;
     margin:auto;
-    margin-top: 20vh;
     text-align: center;
     font-family: 'Inter', sans-serif;
     color: white;
@@ -20,8 +23,15 @@ body{
     font-size: 4rem;
 }
 
-.snowflake{
-    background-color: white;
-    width: 10px;
-    height: 10px;
+#gif{
+    max-height: 50vh;
+}
+
+@media screen and (max-width: 600px) {
+    body{
+        background-color: green;
+    }
+    #gif{
+        max-width: 95%;
+    }
 }

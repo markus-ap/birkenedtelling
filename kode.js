@@ -1,15 +1,13 @@
 const targetTime = new Date("March 18, 2023 09:30:00");  // Set the target time
 let timeRemaining = targetTime - Date.now();  // Calculate the initial time remaining
-
-// Update the countdown every 1000 milliseconds (1 second)
-const interval = setInterval(updateCountdown, 1000);
+setInterval(updateCountdown, 1000);
+setInterval(fyll_gif, (1000*20))
+//setInterval(fyll_film, (1000*60))
 
 window.onload = function(){
-    fyll_film();
-    setInterval(fyll_film, (1000*60))
+    updateCountdown();
+    fyll_gif();  
 }
-
-const film = setInterval(fyll_film, (1000*10))
 
 function updateCountdown() {
   // Calculate the time remaining
@@ -33,12 +31,18 @@ function updateCountdown() {
   p.innerHTML = days + " dagar, " + hours + " timar, " + minutes + " minutt, og " + seconds + " sekund";
 }
 
-function fyll_film(){
+async function fyll_film(){
   const samenlikning = document.getElementById("samenlikning");
   const film = tilfeldig_film()
   let antall = Math.round(timeRemaining / filmlengde_i_sekund(film["timar"], film["minutt"]));
 
   samenlikning.innerHTML = "På den tida kan du sjå " + film["tittel"] + " " + antall + " gongar!";
+}
+
+async function fyll_gif(){
+    const samenlikning = document.getElementById("samenlikning");
+    let gifUrl = await getRandomGif("surprised");
+    samenlikning.innerHTML = "<img id='gif' src='" + gifUrl + "'>";
 }
 
 function tilfeldig_film(){
@@ -86,3 +90,26 @@ function tilfeldig_film(){
 function filmlengde_i_sekund(timar, minutt){
     return (timar * 60 + minutt) * 60 * 1000;
 }
+
+
+async function getRandomGif(searchTerm) {
+    // Build the API endpoint URL
+    const apiKey = "dFblCi8BnZCfy8l9P6YIOvvRvU2N2GS6";
+    const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=${searchTerm}`;
+  
+    // Make the GET request to the API
+    const response = await fetch(endpoint);
+  
+    // Check the response status code
+    if (response.status !== 200) {
+      console.error(`Error: ${response.status}`);
+      return;
+    }
+  
+    // Parse the response data
+    const data = await response.json();
+  
+    // Return the GIF URL
+    return data.data.images.original.url;
+}
+  
