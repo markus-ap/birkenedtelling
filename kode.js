@@ -94,7 +94,7 @@ function filmlengde_i_sekund(timar, minutt){
 
 async function getRandomGif(searchTerm) {
     // Build the API endpoint URL
-    const apiKey = process.env.API_KEY;
+    const apiKey = "nXQZqueNgbznfpm65bfJ8YL1wFvxmZG4";
     const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=${searchTerm}`;
   
     // Make the GET request to the API
